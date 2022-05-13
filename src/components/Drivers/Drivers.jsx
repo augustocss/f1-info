@@ -25,6 +25,10 @@ const Drivers = () => {
         loadData();
     }, [])
 
+    if (loading) {
+        return <p>Carregando...</p>;
+    }
+
     return (
         <div className="Drivers">
             <h2>Drivers</h2>
