@@ -19,7 +19,7 @@
   height: 97%;
   width: 99%;
   border-radius: 0.5rem;
-  background-color: var(--gray);
+  background-color: var(--silver);
   overflow: hidden;
   grid-template-columns: 11rem auto;
 }

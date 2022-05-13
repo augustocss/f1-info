@@ -1,22 +1,25 @@
 import './Sidebar.css';
 import F1Logo from '../../assets/f1_logo_white.svg';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
     return (
         <div className="Sidebar">
             <div className="logo">
-                <img src={F1Logo} alt="" />
+                <Link to="/">
+                    <img src={F1Logo} alt="F1 Logo" />
+                </Link>
                 <span>F1 info dashboard</span>
             </div>
             <div className="menu">
-                <div className="menuItem">
-                    <span>Drivers</span>
+                <div className="menuItem active">
+                    <span><Link to="/drivers">Drivers</Link></span>
                 </div>
                 <div className="menuItem">
-                    <span>Teams</span>
+                    <span><Link to="/teams">Teams</Link></span>
                 </div>
                 <div className="menuItem">
-                    <span>Circuits</span>
+                    <span><Link to="/races">Circuits</Link></span>
                 </div>
                 <div className="menuItem">
                     <span>Standings</span>

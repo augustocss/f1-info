@@ -30,15 +30,16 @@ const Drivers = () => {
     }
 
     return (
-        <div className="Drivers">
-            <h2>Drivers</h2>
+        <div className="drivers">
             {drivers.map((driver) => (
                 <div className="driver" key={driver.driverId}>
-                    <img src={require('../../assets/drivers/' + driver.driverId + '.png')} alt="imagem" />
-                    {driver.permanentNumber} 
-                    Name: {driver.givenName + " " + driver.familyName}
-                    Nationality: {driver.nationality}
-                    <a href={driver.url}>see more +</a>
+                    <div className="driverData">
+                        <span>#{driver.permanentNumber}</span>
+                        <span>{driver.givenName + " " + driver.familyName}</span>
+                        <span>{driver.nationality}</span>
+                        <span><a href={driver.url}>see more +</a></span>
+                    </div>
+                    <img src={require('../../assets/drivers/' + driver.driverId + '.png')} alt="imagem" />                    
                 </div>
             ))}
         </div>

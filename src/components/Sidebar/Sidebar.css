@@ -20,7 +20,7 @@
     height: 4%;
 }
 
-.logo>img {
+.logo>a>img {
     width: 7rem;
     height: 7rem;
 }
@@ -37,6 +37,11 @@
     gap: 2rem;
 }
 
+.menu a {
+    color: var(--silver);
+    text-decoration: none;
+}
+
 .menuItem {
     display: flex;
     align-items: center;
@@ -49,6 +54,12 @@
     font-size: 14px;
 }
 
-.menuItem:hover {
+.menuItem:hover, .menuItem a:hover {
     cursor: pointer;
+    color: var(--red);
+}
+
+.active {
+    background: var(--gray);
+    margin-left: 0;
 }
