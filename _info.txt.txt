@@ -1,0 +1,42 @@
+F1 App Project
+--------------
+
+- Home
+	- Last Race info
+		https://ergast.com/api/f1/current/last/results.json (last results)
+	- Upcoming Race info
+	
+- Drivers
+	- List all drivers
+		https://ergast.com/api/f1/2022/drivers.json
+	- OnClick, list driver detail
+		https://ergast.com/api/f1/drivers/alonso.json
+	
+- Races
+	- List all races (race schedule)
+		https://ergast.com/api/f1/2022.json
+		https://ergast.com/api/f1/current.json
+		
+	- OnClick, list race/circuit details
+		https://ergast.com/api/f1/2022/5/results.json (by the round number)		
+	
+- Constructors
+	- List all constructor
+		https://ergast.com/api/f1/2022/constructors.json
+	- OnClick, show team info and the drivers. Head to Head
+		http://ergast.com/api/f1/constructors/mclaren.json
+	
+- Standings
+	- Driver Standings
+		https://ergast.com/api/f1/2022/driverStandings.json
+	- Constructor Standings
+		https://ergast.com/api/f1/2022/constructorStandings.json
+		
+		
+* Fotos
+	- Drivers
+		https://www.formula1.com/en/drivers.html
+	- Constructors
+		https://www.formula1.com/en/teams.html
+	- Circuits
+		https://www.formula1.com/en/racing/2022.html

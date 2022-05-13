@@ -1,0 +1,8 @@
+.driver {
+    display: flex;
+    flex-direction: column;
+}
+.driver>img {
+    width: 7rem;
+    height: 7rem;
+}
