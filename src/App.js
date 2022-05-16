@@ -1,6 +1,5 @@
 import './App.css';
 import Rotas from './Rotas';
-import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
   return (

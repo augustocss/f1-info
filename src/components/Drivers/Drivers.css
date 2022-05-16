@@ -17,6 +17,7 @@
     display: flex;
     gap: 0.5rem;
     box-shadow: 0 0 1em var(--gray);
+    width: 17rem;
 }
 
 .driver:hover {    
@@ -25,6 +26,7 @@
 .driverData{
     display: flex;
     flex-direction: column;
+    flex-grow: 2;
 }
 
 .driverData>span:nth-of-type(1) {

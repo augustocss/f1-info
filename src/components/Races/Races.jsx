@@ -1,5 +1,6 @@
 import './Races.css';
 import { useState, useEffect } from 'react';
+const moment = require('moment');
 
 const API = "https://ergast.com/api/f1";
 
@@ -36,8 +37,9 @@ const Races = () => {
                     <img src={require('../../assets/circuits/' + race.Circuit.circuitId + '.png')} alt="imagem" />
                     <div className="raceData">
                         <span>{race.raceName}</span>
-                        <span>{race.Circuit.circuitName}</span>
-                        <span><a href={"http://maps.google.com/maps?z=10&t=k&q=loc:" + race.Circuit.Location.lat + "+" + race.Circuit.Location.long}>{race.Circuit.Location.locality + " | " + race.Circuit.Location.country}</a></span>
+                        <span><a href={"http://maps.google.com/maps?z=10&t=k&q=loc:" + race.Circuit.Location.lat + "+" + race.Circuit.Location.long}>{race.Circuit.circuitName}</a></span>
+                        <span>{race.Circuit.Location.locality + " | " + race.Circuit.Location.country}</span>
+                        <span>{moment(race.FirstPractice.date).format("DD") + "-" + moment(race.date).format("DD") + " " + moment(race.date).format("MMM")}</span>
                         <span><a href={race.url}>see more +</a></span>
                     </div>                    
                 </div>

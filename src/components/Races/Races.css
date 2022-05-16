@@ -40,15 +40,15 @@
     color: var(--gray);
 }
 
-.raceData>span:nth-of-type(3) {
+.raceData>span:nth-of-type(4) {
     font-style: italic;
     color: var(--gray);
 }
 
-.raceData>span:nth-of-type(4) {
+.raceData>span:nth-of-type(5) {
     text-align: right;
 }
 .race>img {
-    width: 25rem;
+    width: 20rem;
     border-bottom: 1px dotted var(--gray);
 }

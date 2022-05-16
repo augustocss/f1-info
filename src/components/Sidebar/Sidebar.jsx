@@ -19,10 +19,10 @@ const Sidebar = () => {
                     <span><Link to="/teams">Teams</Link></span>
                 </div>
                 <div className="menuItem">
-                    <span><Link to="/races">Circuits</Link></span>
+                    <span><Link to="/races">Races</Link></span>
                 </div>
                 <div className="menuItem">
-                    <span>Standings</span>
+                    <span><Link to="/standings">Standings</Link></span>
                 </div>
             </div>
         </div>

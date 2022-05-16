@@ -31,7 +31,7 @@
 
 .teamData>span:nth-of-type(1) {
     font-weight: bold;
-    font-size: 2.3rem;
+    font-size: 1.4rem;
     color: var(--black);
 }
 
@@ -45,6 +45,6 @@
 }
 
 .team>img {
-    width: 20rem;
+    width: 17rem;
     border-bottom: 1px dotted var(--gray);
 }

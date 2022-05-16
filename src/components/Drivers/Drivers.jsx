@@ -19,7 +19,11 @@ const Drivers = () => {
             setLoading(false);
             //console.log(res.MRData.DriverTable.Drivers);
 
-            setDrivers(res.MRData.DriverTable.Drivers);
+            setDrivers(res.MRData.DriverTable.Drivers.sort(function(a, b) {
+                if(a.givenName < b.givenName) return -1;
+                if(a.givenName > b.givenName) return 1;
+                return 0;
+            }));
         }
 
         loadData();
