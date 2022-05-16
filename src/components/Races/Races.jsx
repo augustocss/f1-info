@@ -1,6 +1,9 @@
 import './Races.css';
 import { useState, useEffect } from 'react';
+import Loading from '../Loading/Loading';
+
 const moment = require('moment');
+
 
 const API = "https://ergast.com/api/f1";
 
@@ -27,7 +30,9 @@ const Races = () => {
     }, [])
 
     if (loading) {
-        return <p>Carregando...</p>;
+        return (
+            <Loading />
+        )
     }
 
     return (

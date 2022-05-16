@@ -1,5 +1,7 @@
 import './Teams.css';
 import { useState, useEffect } from 'react';
+import Loading from '../Loading/Loading';
+import { TeamsInfo } from '../../Data.js';
 
 const API = "https://ergast.com/api/f1";
 
@@ -26,13 +28,15 @@ const Teams = () => {
     }, [])
 
     if (loading) {
-        return <p>Carregando...</p>;
+        return (
+            <Loading />
+        )
     }
 
     return (
         <div className="teams">
             {teams.map((team) => (
-                <div className="team" key={team.constructorId}>
+                <div className="team" key={team.constructorId}>                    
                     <img src={require('../../assets/teams/' + team.constructorId + '.png')} alt="imagem" />
                     <div className="teamData">
                         <span>{team.name}</span>

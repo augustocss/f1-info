@@ -1,5 +1,7 @@
 import './Drivers.css';
 import { useState, useEffect } from 'react';
+import Loading from '../Loading/Loading';
+
 
 const API = "https://ergast.com/api/f1";
 
@@ -30,7 +32,9 @@ const Drivers = () => {
     }, [])
 
     if (loading) {
-        return <p>Carregando...</p>;
+        return (
+            <Loading />
+        )
     }
 
     return (

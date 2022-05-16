@@ -3,7 +3,8 @@
     flex-direction: row;
     overflow-y: scroll;
     flex-wrap: wrap;
-    align-items: flex-start;    
+    align-items: flex-start;   
+    justify-content: center; 
 }
 
 .standings {
