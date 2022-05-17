@@ -1,6 +1,7 @@
 import './Drivers.css';
 import { useState, useEffect } from 'react';
 import Loading from '../Loading/Loading';
+import { TeamsInfo } from '../../Data.js';
 
 
 const API = "https://ergast.com/api/f1";
@@ -21,9 +22,9 @@ const Drivers = () => {
             setLoading(false);
             //console.log(res.MRData.DriverTable.Drivers);
 
-            setDrivers(res.MRData.DriverTable.Drivers.sort(function(a, b) {
-                if(a.givenName < b.givenName) return -1;
-                if(a.givenName > b.givenName) return 1;
+            setDrivers(res.MRData.DriverTable.Drivers.sort(function (a, b) {
+                if (a.givenName < b.givenName) return -1;
+                if (a.givenName > b.givenName) return 1;
                 return 0;
             }));
         }
@@ -42,12 +43,14 @@ const Drivers = () => {
             {drivers.map((driver) => (
                 <div className="driver" key={driver.driverId}>
                     <div className="driverData">
-                        <span>#{driver.permanentNumber}</span>
+                        <span style={{ color: (TeamsInfo.find((data) => { return ((data.drivers[0] === driver.driverId) || (data.drivers[1] === driver.driverId) || (data.drivers[2] === driver.driverId))})).teamColor }}>
+                            #{driver.permanentNumber}
+                        </span>
                         <span>{driver.givenName + " " + driver.familyName}</span>
                         <span>{driver.nationality}</span>
                         <span><a href={driver.url}>see more +</a></span>
                     </div>
-                    <img src={require('../../assets/drivers/' + driver.driverId + '.png')} alt="imagem" />                    
+                    <img src={require('../../assets/drivers/' + driver.driverId + '.png')} alt="imagem" />
                 </div>
             ))}
         </div>

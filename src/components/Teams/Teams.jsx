@@ -39,7 +39,7 @@ const Teams = () => {
                 <div className="team" key={team.constructorId}>                    
                     <img src={require('../../assets/teams/' + team.constructorId + '.png')} alt="imagem" />
                     <div className="teamData">
-                        <span>{team.name}</span>
+                        <span style={{ color: (TeamsInfo.find(data => data.teamName === team.constructorId )).teamColor }}>{team.name}</span>
                         <span>{team.nationality}</span>
                         <span><a href={team.url}>see more +</a></span>
                     </div>                    
