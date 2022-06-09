@@ -21,8 +21,7 @@ const Races = () => {
                 .catch((err) => console.log(err));
 
             setLoading(false);
-            //console.log(res.MRData.DriverTable.Drivers);
-
+            
             setRaces(res.MRData.RaceTable.Races);
         }
 

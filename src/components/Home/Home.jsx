@@ -1,17 +1,19 @@
-import { useRef, useState, useEffect } from 'react';
+import './Home.css';
+
+import { useState, useEffect } from 'react';
 import Loading from '../Loading/Loading';
-//import { TeamsInfo } from '../../Data.js';
+import { TeamsInfo } from '../../Data.js';
 
 const API = "https://ergast.com/api/f1";
 
 const Home = () => {
-    //const [lastRace, setLastRace] = useState([]);
-    //const [upcomingRace, setUpcomingRace] = useState([]);
+    const [lastRace, setLastRace] = useState([]);
+    //    const [lastRaceName, setLastRaceName] = useState([]);    
+    const [upcomingRace, setUpcomingRace] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
-    const last = useRef();
-    const next = useRef();
+    const [nextRound, setNextRound] = useState(null);
 
+    // fetch last race
     useEffect(() => {
         const loadData = async () => {
             setLoading(true);
@@ -22,11 +24,22 @@ const Home = () => {
                 .then((data) => data)
                 .catch((err) => {
                     console.log(err);
-                    setError(true);
                 });
 
             // capturando o round atual (e incrementando 1) numa var temp pois o state abaixo nao fica imediatamente disponivel
-            const nextRound = Number(resLastRace.MRData.RaceTable.Races[0].round) + 1;
+            setNextRound(Number(resLastRace.MRData.RaceTable.Races[0].round) + 1);
+
+            setLoading(false);
+            setLastRace(resLastRace.MRData.RaceTable.Races);
+        }
+        loadData();
+    }, []);
+    console.log(lastRace);
+
+    // fetch upcoming race
+    useEffect(() => {
+        const loadData = async () => {
+            setLoading(true);
 
             // load upcoming race
             const resUpcomingRace = await fetch(API + "/2022/" + nextRound + ".json")
@@ -34,20 +47,14 @@ const Home = () => {
                 .then((data) => data)
                 .catch((err) => {
                     console.log(err);
-                    setError(true);
                 });
-
             setLoading(false);
-            //setLastRace(resLastRace.MRData.RaceTable.Races);
-            last.current = resLastRace.MRData.RaceTable.Races[0].Results;
-            //setUpcomingRace(resUpcomingRace.MRData.RaceTable.Races);
-            next.current = resUpcomingRace.MRData.RaceTable.Races[0];
+            setUpcomingRace(resUpcomingRace.MRData.RaceTable.Races);
         }
+        nextRound && loadData();
 
-        loadData();
-    }, [])
-
-    //console.log(last.current);
+    }, [lastRace, nextRound]);
+    //console.log(upcomingRace);
 
     if (loading) {
         return (
@@ -57,15 +64,27 @@ const Home = () => {
 
     return (
         <div className='homeTable'>
-            <div className='homeRaces'>
-                <h2>Last Round</h2>
-                {(last.current).map((resu) => (
-                    <div>{ resu.number }</div>
-                ))}
-            </div>
-            <div className='homeRaces'>
+            {lastRace.map((race, i) => (
+                <div className='lastRace' key={i} style={{ backgroundImage: `url("/${race.Circuit.circuitId}-photo.jpg")`, backgroundPosition: "center", backgroundSize: "cover"}}>
+                    <h2>Last Race</h2>
+                    <h6>{race.raceName}</h6>
+                    {(race.Results).slice(0, 3).map((res, i) => (
+                        <div className='lastResults' key={i} style={{ backgroundColor: (TeamsInfo.find(data => data.teamName === res.Constructor.constructorId)).teamColor }}>
+                            <div id='resDriver'>{res.Driver.familyName}</div>
+                            <div id='resPosition'>{res.position}</div>
+                        </div>
+                    ))}
+                </div>
+            ))}
 
-            </div>
+            {upcomingRace.map((race, i) => (
+                <div key={i} className='upcomingRace' style={{ backgroundImage: `url("/${race.Circuit.circuitId}-photo.jpg")`, backgroundPosition: "center", backgroundSize: "cover" }}>
+                    <h2>Upcoming Race</h2>
+                    <h6>{race.raceName}</h6>
+                    <p>{race.Circuit.Location.locality}</p>
+                    <p>{race.date}</p>
+                </div>
+            ))}
         </div>
     )
 }
