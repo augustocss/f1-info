@@ -12,10 +12,12 @@
     color: white;
     font-weight: bold;
     border-radius: 10px;
+    border: 1px solid var(--gray);
 }
 
 .upcomingRace h2, 
 .upcomingRace h6,
+.upcomingRace p,
 .lastRace h2,
 .lastRace h6 {
     text-align: center;
